@@ -176,6 +176,9 @@ p { max-width: 65ch; }
   display: flex;
   align-items: center;
   transition: background var(--trans), box-shadow var(--trans);
+  /* Safe area padding for landscape notch (iPhone) */
+  padding-left: var(--safe-l);
+  padding-right: var(--safe-r);
 }
 .nav.scrolled {
   background: var(--c-warm-white);
@@ -254,51 +257,134 @@ p { max-width: 65ch; }
 }
 .nav__book:hover { background: var(--c-terra); border-color: var(--c-terra); }
 
+/* ── HAMBURGER BUTTON ──────────────────────────────────────
+   48×48px tap target (Apple HIG / WCAG minimum).
+   Spans are absolutely positioned so we can animate them
+   independently into an ✕ without layout shifts.           */
 .nav__burger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: 4px;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  margin-right: -10px; /* visual alignment against nav edge */
+  border-radius: var(--radius);
   cursor: pointer;
 }
 .nav__burger span {
-  width: 24px; height: 2px;
+  position: absolute;
+  left: 50%;
+  width: 22px;
+  height: 2px;
   background: #fff;
   border-radius: 2px;
-  transition: var(--trans);
-  display: block;
+  transform-origin: center center;
+  transition:
+    top    .35s cubic-bezier(.25,.46,.45,.94),
+    opacity .2s ease,
+    transform .35s cubic-bezier(.25,.46,.45,.94);
 }
+/* ── 3-line default state ── */
+.nav__burger span:nth-child(1) {
+  top: calc(50% - 7px);
+  transform: translateX(-50%);
+}
+.nav__burger span:nth-child(2) {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.nav__burger span:nth-child(3) {
+  top: calc(50% + 5px);
+  transform: translateX(-50%);
+}
+/* ── ✕ open state ── */
+.nav__burger.open span:nth-child(1) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.nav__burger.open span:nth-child(2) {
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleX(0);
+}
+.nav__burger.open span:nth-child(3) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+/* Colour swap when nav is scrolled */
 .nav.scrolled .nav__burger span { background: var(--c-espresso); }
 
-/* Mobile menu */
+/* ── MOBILE MENU OVERLAY ────────────────────────────────────
+   Full-screen slide-in panel. Safe-area-aware so content
+   never hides behind a notch or the iOS home bar.          */
 .nav__mobile {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: var(--c-espresso);
   z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 0;                          /* gap handled by link padding */
+  /* Safe area insets */
+  padding-top:    max(2rem, calc(var(--safe-t) + var(--nav-h)));
+  padding-bottom: max(3rem, calc(var(--safe-b) + 2rem));
+  padding-left:   max(2rem, calc(var(--safe-l) + 1.5rem));
+  padding-right:  max(2rem, calc(var(--safe-r) + 1.5rem));
   transform: translateX(100%);
-  transition: transform .4s cubic-bezier(.77,0,.175,1);
+  transition: transform .42s cubic-bezier(.77,0,.175,1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .nav__mobile.open { transform: translateX(0); }
+
+/* Each nav link: min 56px tall, full-width, centred */
 .nav__mobile a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 56px;
+  padding: .5rem 1.5rem;
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 8vw, 2.8rem);
   font-weight: 600;
   color: var(--c-cream);
   letter-spacing: -.01em;
+  border-bottom: 1px solid rgba(250,243,227,.06);
+  transition: color var(--trans), background var(--trans);
 }
-.nav__mobile a:hover { color: var(--c-terra); }
+.nav__mobile a:last-of-type { border-bottom: none; }
+.nav__mobile a:active { color: var(--c-terra); background: rgba(196,98,62,.08); }
+
+/* Close button — 48×48px tap target, top-right, safe-area aware */
 .nav__mobile-close {
   position: absolute;
-  top: 1.5rem; right: 1.5rem;
-  color: var(--c-cream);
-  font-size: 2rem;
+  top:   max(1rem, calc(var(--safe-t) + .75rem));
+  right: max(1rem, calc(var(--safe-r) + .75rem));
+  width:  48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(250,243,227,.7);
+  font-size: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(250,243,227,.15);
   cursor: pointer;
+  transition: background var(--trans), color var(--trans);
+}
+.nav__mobile-close:hover,
+.nav__mobile-close:active {
+  background: rgba(196,98,62,.2);
+  color: #fff;
+}
+
+/* ── BODY SCROLL LOCK ───────────────────────────────────────
+   Applied via JS — prevents background scroll on iOS/Android
+   when the menu overlay is open.                           */
+body.nav-open {
+  overflow: hidden;
 }
 
 /* ── HERO ─────────────────────────────────────────────────── */

@@ -15,14 +15,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── MOBILE MENU ─────────────────────────────────────────── */
-  const burger   = document.querySelector('.nav__burger');
+  const burger     = document.querySelector('.nav__burger');
   const mobileMenu = document.querySelector('.nav__mobile');
-  const closeBtn = document.querySelector('.nav__mobile-close');
+  const closeBtn   = document.querySelector('.nav__mobile-close');
+
+  // Store scroll position before locking — iOS needs position:fixed trick
+  // to actually stop the page scrolling under the overlay.
+  let _scrollY = 0;
+
+  function openMenu() {
+    _scrollY = window.scrollY;
+    // Lock body scroll (iOS-safe)
+    document.body.style.position   = 'fixed';
+    document.body.style.top        = `-${_scrollY}px`;
+    document.body.style.width      = '100%';
+    document.body.style.overflowY  = 'scroll'; // keep scrollbar gutter, prevent shift
+    document.body.classList.add('nav-open');
+    // Open overlay
+    mobileMenu.classList.add('open');
+    // Burger → ✕
+    burger.classList.add('open');
+    burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Close menu');
+    // Move focus into the menu for screen-readers
+    closeBtn?.focus();
+  }
+
+  function closeMenu() {
+    // Unlock body scroll and restore position
+    document.body.style.position  = '';
+    document.body.style.top       = '';
+    document.body.style.width     = '';
+    document.body.style.overflowY = '';
+    document.body.classList.remove('nav-open');
+    window.scrollTo({ top: _scrollY, behavior: 'instant' });
+    // Close overlay
+    mobileMenu.classList.remove('open');
+    // ✕ → burger
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Open menu');
+    // Return focus to the trigger
+    burger.focus();
+  }
+
   if (burger && mobileMenu) {
-    burger.addEventListener('click', () => mobileMenu.classList.add('open'));
-    closeBtn?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    burger.addEventListener('click', openMenu);
+
+    // Close button (✕ in top corner)
+    closeBtn?.addEventListener('click', closeMenu);
+
+    // Close when a nav link is tapped
     mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+      a.addEventListener('click', closeMenu);
+    });
+
+    // Close on backdrop tap (user taps the overlay but not a link)
+    mobileMenu.addEventListener('click', e => {
+      if (e.target === mobileMenu) closeMenu();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
     });
   }
 
