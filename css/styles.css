@@ -258,60 +258,63 @@ p { max-width: 65ch; }
 .nav__book:hover { background: var(--c-terra); border-color: var(--c-terra); }
 
 /* ── HAMBURGER BUTTON ──────────────────────────────────────
-   48×48px tap target (Apple HIG / WCAG minimum).
-   Spans are absolutely positioned so we can animate them
-   independently into an ✕ without layout shifts.           */
+   48×48px tap target. Drawn with ::before (top+bottom lines
+   via box-shadow) and ::after (middle line). No child elements
+   needed — pseudo-elements cannot be overridden by browser
+   default button rendering.                                 */
 .nav__burger {
   display: none;
   position: relative;
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  margin-right: -10px; /* visual alignment against nav edge */
+  margin-right: -10px;
   border-radius: var(--radius);
   cursor: pointer;
+  color: #fff; /* lines inherit currentColor */
 }
-.nav__burger span {
+
+/* Middle line */
+.nav__burger::before,
+.nav__burger::after {
+  content: '';
   position: absolute;
   left: 50%;
   width: 22px;
   height: 2px;
-  background: #fff;
+  background: currentColor;
   border-radius: 2px;
-  transform-origin: center center;
-  transition:
-    top    .35s cubic-bezier(.25,.46,.45,.94),
-    opacity .2s ease,
-    transform .35s cubic-bezier(.25,.46,.45,.94);
+  transform-origin: center;
+  transition: transform .35s cubic-bezier(.25,.46,.45,.94),
+              top .35s cubic-bezier(.25,.46,.45,.94),
+              opacity .2s ease;
 }
-/* ── 3-line default state ── */
-.nav__burger span:nth-child(1) {
+/* Top line */
+.nav__burger::before {
   top: calc(50% - 7px);
   transform: translateX(-50%);
+  /* box-shadow draws the middle line; top+bottom handled by ::before and ::after */
+  box-shadow: 0 7px 0 currentColor;  /* middle line */
 }
-.nav__burger span:nth-child(2) {
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.nav__burger span:nth-child(3) {
-  top: calc(50% + 5px);
+/* Bottom line */
+.nav__burger::after {
+  top: calc(50% + 7px);
   transform: translateX(-50%);
 }
+
 /* ── ✕ open state ── */
-.nav__burger.open span:nth-child(1) {
+.nav__burger.open::before {
   top: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: none;
 }
-.nav__burger.open span:nth-child(2) {
-  opacity: 0;
-  transform: translate(-50%, -50%) scaleX(0);
-}
-.nav__burger.open span:nth-child(3) {
+.nav__burger.open::after {
   top: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
-/* Colour swap when nav is scrolled */
-.nav.scrolled .nav__burger span { background: var(--c-espresso); }
+
+/* Colour swap when nav is scrolled (dark background on nav) */
+.nav.scrolled .nav__burger { color: var(--c-espresso); }
 
 /* ── MOBILE MENU OVERLAY ────────────────────────────────────
    Full-screen slide-in panel. Safe-area-aware so content
@@ -357,8 +360,7 @@ p { max-width: 65ch; }
 .nav__mobile a:last-of-type { border-bottom: none; }
 .nav__mobile a:active { color: var(--c-terra); background: rgba(196,98,62,.08); }
 
-/* Close button — not used; the burger itself is the toggle (☰ → ✕).
-   Hidden permanently. Kept in HTML only for legacy DOM references.  */
+/* Close button removed from HTML. This rule is a safety net only. */
 .nav__mobile-close { display: none !important; }
 
 /* ── BODY SCROLL LOCK ───────────────────────────────────────
@@ -1580,7 +1582,8 @@ body.nav-open {
 }
 
 /* ── MOBILE CTA BAR ─────────────────────────────────────────
-   Sticky "Book / Order" bar — mobile only, hides at footer. */
+   Sticky "Book / Order" bar — mobile only, hides at footer.
+   All colours are hardcoded hex — no CSS variable dependency. */
 .mob-cta { display: none; }
 
 @media (max-width: 768px) {
@@ -1590,19 +1593,17 @@ body.nav-open {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 800; /* below nav (1000) and mobile menu (999) */
-    background: var(--c-espresso);
-    border-top: 1px solid rgba(250,243,227,.12);
+    z-index: 800;
+    background: #18090c;            /* --c-espresso, hardcoded */
+    border-top: 2px solid #c4623e;  /* --c-terra accent line   */
     padding: .75rem 1rem;
-    /* Safe-area padding so home-bar on iPhone doesn't overlap buttons */
-    padding-bottom: max(.75rem, calc(var(--safe-b) + .75rem));
+    padding-bottom: max(.75rem, env(safe-area-inset-bottom, 0px));
     gap: .65rem;
     transform: translateY(0);
     transition: transform .35s ease;
-    box-shadow: 0 -4px 24px rgba(0,0,0,.35);
+    box-shadow: 0 -8px 32px rgba(0,0,0,.5);
   }
-  /* Slide off-screen when footer becomes visible */
-  .mob-cta.hidden { transform: translateY(calc(100% + 1px)); }
+  .mob-cta.hidden { transform: translateY(110%); }
 
   .mob-cta__btn {
     flex: 1;
@@ -1611,26 +1612,31 @@ body.nav-open {
     justify-content: center;
     gap: .4rem;
     min-height: 48px;
-    border-radius: var(--radius);
-    font-family: var(--font-body);
-    font-size: .82rem;
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;   /* hardcoded, no variable */
+    font-size: .8rem;
     font-weight: 600;
-    letter-spacing: .07em;
+    letter-spacing: .08em;
     text-transform: uppercase;
     text-decoration: none;
     touch-action: manipulation;
     transition: opacity .15s ease;
   }
   .mob-cta__btn:active { opacity: .75; }
-  .mob-cta__btn--primary { background: var(--c-terra); color: #fff; }
-  .mob-cta__btn--gold    { background: var(--c-gold);  color: var(--c-espresso); }
+  .mob-cta__btn--primary {
+    background: #c4623e;  /* --c-terra */
+    color: #fff;
+  }
+  .mob-cta__btn--gold {
+    background: transparent;
+    color: #c9922a;        /* --c-gold */
+    border: 1.5px solid #c9922a;
+  }
 
-  /* Footer gets extra bottom padding equal to bar height so bar never
-     covers footer content. Fixed value — no env() calc complexity.  */
+  /* Footer padding keeps content above the fixed bar */
   .footer { padding-bottom: 96px; }
 
-  /* Dark background on html AND body eliminates any white overscroll
-     or scroll-area exposure on iOS Safari and Android Chrome.        */
+  /* Prevent white overscroll on iOS / Android */
   html, body { background: #100508; }
 }
 
