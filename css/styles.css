@@ -1460,6 +1460,26 @@ body.nav-open {
   .caffe__img-col { order: 2; }
   .story__img-badge { right: 0; bottom: -1rem; width: 100px; height: 100px; }
   .story__img-badge strong { font-size: 1.6rem; }
+  /* Story: switch portrait to landscape so it doesn't eat the screen */
+  .story__img { aspect-ratio: 3/2; }
+
+  /* Dish cards: reduce tall first card; grid is 1-col so height is ample */
+  .dish-card:first-child .dish-card__img { min-height: 280px; }
+
+  /* Caffe images: stack single column, landscape ratio, remove stagger offset */
+  .caffe__imgs         { grid-template-columns: 1fr; }
+  .caffe__img          { aspect-ratio: 3/2; }
+  .caffe__img:first-child { margin-top: 0; }
+
+  /* Testimonials: tighter card padding */
+  .review-card { padding: 1.25rem; }
+
+  /* Events story quote: tighter padding + slightly smaller pull-quote size */
+  .event-story__quote { padding: 1.5rem; }
+  .event-story__quote p { font-size: 1.1rem; }
+
+  /* FAQ: explicit 56px tap target on question rows */
+  .faq__q { min-height: 56px; }
 
   .dishes__grid      { grid-template-columns: 1fr; }
   .testimonials__grid { grid-template-columns: 1fr; }
@@ -1497,6 +1517,13 @@ body.nav-open {
   /* Secondary CTAs collapse to single column below 480px */
   .hero__ctas-secondary { grid-template-columns: 1fr; }
 
+  /* Book options: 2-column grid — side-by-side on 480px+ phones */
+  .book__options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .book__option  { max-width: none; width: 100%; flex-direction: column; align-items: center; justify-content: flex-start; }
+
+  /* Footer social icons: minimum 44px tap target */
+  .footer__social a { width: 44px; height: 44px; }
+
   /* ── SECTION PADDING SCALE ──────────────────────────────────
      7-rem sections → 3.5rem | 6-rem sections → 3rem           */
   .story, .dishes, .caffe, .testimonials, .faq, .book {
@@ -1532,6 +1559,9 @@ body.nav-open {
 
   .nav__logo      { font-size: 1.25rem; }
   .nav__logo span { font-size: .95rem; }
+
+  /* FAQ answer: tighter side padding at smallest screens */
+  .faq__a p { padding-left: 1.25rem; padding-right: 1.25rem; }
 
   /* Section padding: squeeze a further 0.5rem at 375px and below */
   .story, .dishes, .caffe, .testimonials, .faq, .book {
