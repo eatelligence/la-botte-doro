@@ -1494,6 +1494,22 @@ body.nav-open {
   .book__option  { width: 100%; max-width: 280px; flex-direction: row; justify-content: flex-start; }
   .form-row      { grid-template-columns: 1fr; }
 
+  /* ── MENU PAGE ──────────────────────────────────────────── */
+  /* Full-width tab container so tabs don't orphan on narrow screens */
+  .menu-tabs { width: 100%; }
+
+  /* ── CONTACT PAGE ───────────────────────────────────────── */
+  /* Stack day + time vertically — the time string is too long for one line */
+  .hours-row { flex-direction: column; align-items: flex-start; gap: .1rem; }
+  /* Map: 400px is too tall on a phone viewport */
+  .map-embed  { height: 260px; }
+
+  /* ── PAGE HEADERS ───────────────────────────────────────── */
+  /* Swap sub-page header backgrounds to mobile-sized crops */
+  .page-header.menu-bg::before    { background-image: url('https://images.unsplash.com/photo-1551183053-bf91798d765a?w=900&q=75&fit=crop'); }
+  .page-header.events-bg::before  { background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=900&q=75&fit=crop'); }
+  .page-header.contact-bg::before { background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=75&fit=crop'); }
+
   /* ── SECTION PADDING SCALE ──────────────────────────────────
      7-rem sections → 4.5rem | 6-rem sections → 4rem
      Halves the dead vertical space on phone screens.          */
@@ -1523,6 +1539,9 @@ body.nav-open {
 
   /* Footer social icons: minimum 44px tap target */
   .footer__social a { width: 44px; height: 44px; }
+
+  /* Menu tabs: each tab fills equal space, 48px touch target */
+  .menu-tab { flex: 1; min-height: 48px; padding: .6rem .5rem; text-align: center; }
 
   /* ── SECTION PADDING SCALE ──────────────────────────────────
      7-rem sections → 3.5rem | 6-rem sections → 3rem           */
@@ -1562,6 +1581,10 @@ body.nav-open {
 
   /* FAQ answer: tighter side padding at smallest screens */
   .faq__a p { padding-left: 1.25rem; padding-right: 1.25rem; }
+
+  /* Contact: hours text even tighter at 375px */
+  .hours-row { padding: .55rem 0; }
+  .hours-row .time { font-size: .82rem; }
 
   /* Section padding: squeeze a further 0.5rem at 375px and below */
   .story, .dishes, .caffe, .testimonials, .faq, .book {
