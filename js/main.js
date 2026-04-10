@@ -91,6 +91,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ── FAQ ACCORDION ───────────────────────────────────────── */
+  document.querySelectorAll('.faq__q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq__item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq__item.open').forEach(el => el.classList.remove('open'));
+      // Open clicked (unless it was already open)
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+  // Open first FAQ by default
+  const firstFaq = document.querySelector('.faq__item');
+  if (firstFaq) firstFaq.classList.add('open');
+
   /* ── CONTACT FORM ─────────────────────────────────────────── */
   const form = document.querySelector('.contact-form');
   if (form) {
