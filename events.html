@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Botte D'Oro Events & Private Dining — Host your next celebration at our authentic Italian restaurant in Leichhardt. Christenings, weddings, birthdays, Valentine's Day and more.">
+  <title>Events & Private Dining — La Botte D'Oro | Leichhardt, Sydney</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫙</text></svg>">
+  <style>
+    .features-list {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--c-parchment);
+      font-size: .95rem;
+      color: var(--c-text-mid);
+    }
+    .features-list li:last-child { border-bottom: none; }
+    .features-list li::before {
+      content: '✦';
+      color: var(--c-terra);
+      font-size: .75rem;
+      margin-top: .25rem;
+      flex-shrink: 0;
+    }
+    .events-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 4rem 0;
+    }
+    .events-gallery img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+      transition: transform .4s ease;
+    }
+    .events-gallery img:hover { transform: scale(1.02); }
+    @media(max-width:768px){
+      .events-gallery { grid-template-columns: repeat(2,1fr); }
+    }
+    .enquiry-form {
+      max-width: 700px;
+      margin-inline: auto;
+      background: var(--c-warm-white);
+      padding: 3rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+    @media(max-width:600px){
+      .enquiry-form { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        La Botte D'Oro
+        <span>Ristorante Italiano</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="https://labottedoro.com.au/book" class="nav__book" target="_blank" rel="noopener">Book a Table</a>
+      <button class="nav__burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile">
+    <button class="nav__mobile-close">✕</button>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://labottedoro.com.au/book" class="btn btn--primary" style="margin-top:1rem">Book a Table</a>
+  </div>
+
+
+  <!-- PAGE HEADER -->
+  <header class="page-header events-bg">
+    <div class="container">
+      <div class="page-header__inner">
+        <span class="section-label" style="justify-content:center">Special Occasions</span>
+        <h1>Make It Memorable</h1>
+        <p>From intimate celebrations to grand gatherings — La Botte D'Oro is where your most important moments become beautiful memories.</p>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- PRIVATE DINING INTRO -->
+  <section class="events-intro">
+    <div class="container">
+      <div class="events-intro__grid">
+        <div class="events-intro__text reveal">
+          <span class="section-label">Private Dining</span>
+          <h2>The Whole Restaurant, Just for You</h2>
+          <p>
+            Some moments deserve a space entirely your own. At La Botte D'Oro,
+            we offer exclusive use of the entire restaurant for your private events —
+            creating an atmosphere that feels warm, personal, and unmistakably Italian.
+          </p>
+          <p>
+            Our owner <strong>Gabriele</strong> and his dedicated team work closely
+            with you to craft a custom menu, manage every detail, and ensure your
+            guests experience the same legendary warmth that has made us a Leichhardt
+            institution since 1977.
+          </p>
+          <p>
+            Whether you're planning a special lunch for 60 or an intimate dinner for 20,
+            we'll make it feel exactly right.
+          </p>
+
+          <ul class="features-list">
+            <li>Exclusive venue hire — full restaurant available for private events</li>
+            <li>Bespoke menus tailored to your occasion and dietary needs</li>
+            <li>Dedicated event coordinator to manage every detail</li>
+            <li>Flexible set menus or à la carte dining for groups</li>
+            <li>Full bar service with curated Italian wine list</li>
+            <li>Family-friendly — high chairs, pram access, and genuinely welcoming</li>
+            <li>Short-notice bookings accommodated wherever possible</li>
+          </ul>
+
+          <a href="#enquiry" class="btn btn--primary" style="margin-top:.5rem">Enquire About Your Event</a>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <!-- TODO: Replace with real private dining / event photo -->
+          <img
+            src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80&fit=crop"
+            alt="Private dining at La Botte D'Oro — replace with real photo"
+            class="events-intro__img"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- OCCASIONS -->
+  <section class="occasions">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:1rem">
+        <span class="section-label" style="justify-content:center">Perfect For</span>
+        <h2>Every Celebration, Crafted With Care</h2>
+      </div>
+
+      <div class="occasions__grid">
+
+        <div class="occasion-card reveal">
+          <!-- TODO: Replace with real christening / family gathering photo -->
+          <img
+            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80&fit=crop"
+            alt="Family celebration at La Botte D'Oro — replace with real photo"
+            class="occasion-card__img"
+            loading="lazy"
+          >
+          <div class="occasion-card__body">
+            <div class="occasion-card__icon">🕊️</div>
+            <h3>Christenings & Baptisms</h3>
+            <p>
+              We recently hosted a beautiful christening lunch for 60 guests — the entire
+              restaurant exclusively theirs. From the handmade pasta to the cannoli,
+              every detail was perfection. We handle everything so you can celebrate freely.
+            </p>
+          </div>
+        </div>
+
+        <div class="occasion-card reveal reveal-delay-1">
+          <!-- TODO: Replace with real Valentine's Day / romantic dinner photo -->
+          <img
+            src="https://images.unsplash.com/photo-1519671282429-b44660ead0a7?w=600&q=80&fit=crop"
+            alt="Romantic Valentine's dinner — replace with real photo"
+            class="occasion-card__img"
+            loading="lazy"
+          >
+          <div class="occasion-card__body">
+            <div class="occasion-card__icon">🌹</div>
+            <h3>Romantic Dinners</h3>
+            <p>
+              Our Valentine's Day set menus are the stuff of legend — candlelight, our
+              finest Italian wines, and food that makes the evening unforgettable.
+              The perfect setting for anniversaries, proposals, and any night you want to
+              feel truly special.
+            </p>
+          </div>
+        </div>
+
+        <div class="occasion-card reveal reveal-delay-2">
+          <!-- TODO: Replace with real birthday / group celebration photo -->
+          <img
+            src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80&fit=crop"
+            alt="Birthday celebration — replace with real photo"
+            class="occasion-card__img"
+            loading="lazy"
+          >
+          <div class="occasion-card__body">
+            <div class="occasion-card__icon">🎂</div>
+            <h3>Birthdays & Milestones</h3>
+            <p>
+              Mark the big ones with us. We'll set the scene with your favourite dishes,
+              a personalised menu, and the kind of warm, fuss-free service that lets you
+              relax and enjoy every moment with the people who matter.
+            </p>
+          </div>
+        </div>
+
+        <div class="occasion-card reveal">
+          <!-- TODO: Replace with real corporate / business lunch photo -->
+          <img
+            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80&fit=crop"
+            alt="Business lunch — replace with real photo"
+            class="occasion-card__img"
+            loading="lazy"
+          >
+          <div class="occasion-card__body">
+            <div class="occasion-card__icon">💼</div>
+            <h3>Business Lunches & Dinners</h3>
+            <p>
+              Impress clients or reward your team. Our private dining offers a sophisticated
+              yet warm setting for business entertaining, with attentive service and a menu
+              that makes every deal taste better.
+            </p>
+          </div>
+        </div>
+
+        <div class="occasion-card reveal reveal-delay-1">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop"
+            alt="Wedding celebration — replace with real photo"
+            class="occasion-card__img"
+            loading="lazy"
+          >
+          <div class="occasion-card__body">
+            <div class="occasion-card__icon">💒</div>
+            <h3>Rehearsal Dinners & Weddings</h3>
+            <p>
+              Begin your forever over Nonna's handmade pasta and a glass of
+              Italian wine. We've been part of Sydney's most beautiful love stories
+              for nearly 50 years and would be honoured to be part of yours.
+            </p>
+          </div>
+        </div>
+
+        <div class="occasion-card reveal reveal-delay-2">
+          <img
+            src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3df1?w=600&q=80&fit=crop"
+            alt="Family-friendly dining — replace with real photo"
+            class="occasion-card__img"
+            loading="lazy"
+          >
+          <div class="occasion-card__body">
+            <div class="occasion-card__icon">👨‍👩‍👧‍👦</div>
+            <h3>Family Gatherings</h3>
+            <p>
+              We are deeply, genuinely family-friendly. Prams welcome, high chairs ready,
+              short-notice bookings accommodated. We know that with families, things
+              don't always go to plan — and we're here for it either way.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- EVENT STORY -->
+  <section class="event-story">
+    <div class="container">
+      <div class="event-story__inner">
+        <span class="section-label">A Real Story</span>
+        <h2>A Christening They'll Never Forget</h2>
+        <div class="event-story__quote reveal">
+          <p>
+            "We booked La Botte D'Oro for our daughter's christening lunch —
+            60 guests, the whole restaurant to ourselves. Gabriele was extraordinary
+            from start to finish. The lamb ragù had everyone emotional, the cannoli
+            were made fresh on the day, and the service never skipped a beat.
+            It felt exactly like being back home in Italy, surrounded by family.
+            We cannot thank them enough."
+          </p>
+          <cite>— The Russo Family · Christening Lunch for 60 Guests</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GALLERY -->
+  <section style="padding:5rem 0;background:var(--c-warm-white)">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:2rem">
+        <span class="section-label" style="justify-content:center">The Atmosphere</span>
+        <h2>The Space That Makes It Special</h2>
+        <p class="p--center" style="color:var(--c-text-mid);margin-top:.75rem">Warm. Vibrant. Intimate. The kind of place you never want to leave.</p>
+      </div>
+
+      <div class="events-gallery">
+        <!-- TODO: Replace ALL gallery images with real La Botte D'Oro event / interior photos -->
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&fit=crop" alt="Restaurant interior — replace with real photo" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80&fit=crop" alt="Dining room — replace with real photo" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=600&q=80&fit=crop" alt="Signature pasta — replace with real photo" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80&fit=crop" alt="Wood-fired pizza — replace with real photo" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80&fit=crop" alt="Tiramisù — replace with real photo" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80&fit=crop" alt="Wine selection — replace with real photo" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ENQUIRY FORM -->
+  <section class="events-enquiry" id="enquiry">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label" style="justify-content:center">Get in Touch</span>
+        <h2>Tell Us About Your Event</h2>
+        <p>Fill in the form below and Gabriele will be in touch personally to discuss how we can make your celebration perfect.</p>
+      </div>
+
+      <div class="enquiry-form reveal reveal-delay-1">
+        <form class="contact-form" action="#" method="post" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="evt-first">First Name *</label>
+              <input type="text" id="evt-first" name="first_name" placeholder="Marco" required>
+            </div>
+            <div class="form-group">
+              <label for="evt-last">Last Name *</label>
+              <input type="text" id="evt-last" name="last_name" placeholder="Rossi" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="evt-email">Email Address *</label>
+              <input type="email" id="evt-email" name="email" placeholder="marco@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="evt-phone">Phone Number</label>
+              <input type="tel" id="evt-phone" name="phone" placeholder="04xx xxx xxx">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="evt-occasion">Type of Occasion *</label>
+              <select id="evt-occasion" name="occasion" required>
+                <option value="">Select occasion…</option>
+                <option>Christening / Baptism</option>
+                <option>Birthday Celebration</option>
+                <option>Anniversary / Romantic Dinner</option>
+                <option>Valentine's Day</option>
+                <option>Wedding / Rehearsal Dinner</option>
+                <option>Business Lunch / Dinner</option>
+                <option>Family Gathering</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="evt-guests">Number of Guests *</label>
+              <select id="evt-guests" name="guests" required>
+                <option value="">Select guests…</option>
+                <option>Under 20</option>
+                <option>20 – 40</option>
+                <option>40 – 60</option>
+                <option>60 – 80</option>
+                <option>80+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="evt-date">Preferred Date *</label>
+              <input type="date" id="evt-date" name="date" required>
+            </div>
+            <div class="form-group">
+              <label for="evt-time">Preferred Time</label>
+              <select id="evt-time" name="time">
+                <option value="">Select time…</option>
+                <option>Lunch (from 11:30 am)</option>
+                <option>Dinner (from 5:30 pm)</option>
+                <option>Flexible</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="evt-message">Tell Us More About Your Event</label>
+            <textarea id="evt-message" name="message" placeholder="Any special requests, dietary requirements, or things we should know…"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;padding:1rem">
+            Send Enquiry
+          </button>
+          <p style="font-size:.8rem;color:var(--c-text-soft);text-align:center;margin-top:1rem">
+            We'll get back to you within 24 hours. Prefer to talk?
+            Call us on <a href="tel:0295601349" style="color:var(--c-terra)">(02) 9560 1349</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">La Botte D'Oro</div>
+          <span class="footer__brand-since">Ristorante Italiano · est. 1977</span>
+          <p class="footer__brand-desc">Authentic Italian flavours with a touch of modern inspiration.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4>Opening Hours</h4>
+          <div class="footer__hours-item"><strong>Mon – Fri</strong><span>7:30 am – 3:00 pm / 5:30 pm – 10:00 pm</span></div>
+          <div class="footer__hours-item"><strong>Sat – Sun</strong><span>8:00 am – 3:00 pm / 5:30 pm – 10:30 pm</span></div>
+          <p style="font-size:.78rem;color:rgba(250,243,227,.35);margin-top:.5rem">Closed 3pm–5:30pm daily</p>
+        </div>
+        <div class="footer__col">
+          <h4>Find Us</h4>
+          <p>137 Marion St, Leichhardt NSW 2040</p>
+          <a href="tel:0295601349">(02) 9560 1349</a>
+          <a href="https://maps.google.com/?q=137+Marion+St+Leichhardt+NSW+2040" target="_blank" rel="noopener" style="color:var(--c-terra);margin-top:.5rem">↗ Google Maps</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 La Botte D'Oro. All rights reserved.</span>
+        <a href="https://labottedoro.com.au">labottedoro.com.au</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

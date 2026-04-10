@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Botte D'Oro — Authentic Italian restaurant since 1977. Handmade pasta, wood-fired pizza, and the warmth of Nonna's kitchen in the heart of Leichhardt, Sydney.">
+  <meta name="keywords" content="Italian restaurant Leichhardt, La Botte D'Oro, Italian food Sydney, wood-fired pizza, handmade pasta, Nonna's cooking">
+  <meta property="og:title" content="La Botte D'Oro — Authentic Italian Since 1977">
+  <meta property="og:description" content="Handmade pasta, wood-fired pizza & the warmth of Nonna's kitchen in Leichhardt, Sydney.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80">
+  <title>La Botte D'Oro — Authentic Italian Since 1977 | Leichhardt, Sydney</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫙</text></svg>">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        La Botte D'Oro
+        <span>Ristorante Italiano</span>
+      </a>
+
+      <ul class="nav__links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <a href="https://labottedoro.com.au/book" class="nav__book" target="_blank" rel="noopener">
+        Book a Table
+      </a>
+
+      <button class="nav__burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="nav__mobile">
+    <button class="nav__mobile-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://labottedoro.com.au/book" class="btn btn--primary" style="margin-top:1rem">Book a Table</a>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero">
+    <!-- TODO: Replace with real restaurant photo -->
+    <div class="hero__bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=85&fit=crop')"></div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Benvenuti a La Botte D'Oro</p>
+      <h1 class="hero__title">
+        Authentic <em>Italian.</em>
+        <span class="hero__since">Since 1977</span>
+      </h1>
+      <p class="hero__intro">
+        Enjoy Nonna's handmade pasta, our signature wood-fired pizzas, and an
+        unforgettable dining experience crafted with passion.
+        <em style="font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.1em;color:rgba(232,184,75,.9)"> Buon appetito.</em>
+      </p>
+
+      <div class="hero__ctas">
+        <a href="https://labottedoro.com.au/book" class="btn btn--primary" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book a Table
+        </a>
+        <a href="https://labottedoro.com.au/order" class="btn btn--gold" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Order Online
+        </a>
+        <span class="hero__badge">
+          <span class="hero__badge-stars">★★★★★</span>
+          4.7 · 625+ Reviews
+        </span>
+      </div>
+
+      <div class="hero__ctas-secondary">
+        <a href="menu.html#dinner" class="btn btn--outline btn--sm">Dinner Menu</a>
+        <a href="menu.html#lunch" class="btn btn--outline btn--sm">Lunch Menu</a>
+        <a href="menu.html#caffe" class="btn btn--outline btn--sm">Caffè Menu</a>
+        <a href="https://labottedoro.com.au/gift" class="btn btn--outline btn--sm" target="_blank" rel="noopener">
+          🎁 Gift an Italian Dinner
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       OUR STORY
+  ═══════════════════════════════════════════ -->
+  <section class="story">
+    <div class="container">
+      <div class="story__grid">
+
+        <div class="story__img-wrap reveal">
+          <!-- TODO: Replace with real restaurant interior or Gabriele photo -->
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&fit=crop"
+            alt="The warm, inviting interior of La Botte D'Oro restaurant — replace with real photo"
+            class="story__img"
+            loading="lazy"
+          >
+          <div class="story__img-badge">
+            <strong>47</strong>
+            <span>Years of Tradition</span>
+          </div>
+        </div>
+
+        <div class="story__text reveal reveal-delay-2">
+          <span class="section-label">Our Story</span>
+          <h2>A Family Table, Open to Everyone</h2>
+          <p>
+            La Botte D'Oro has been a cornerstone of Leichhardt's Italian community
+            since 1977. Founded on the belief that food is love made visible, our
+            restaurant has always been more than just a place to eat — it's a home
+            away from home.
+          </p>
+          <p>
+            Our owner <strong>Gabriele</strong> welcomes every guest with the same
+            warm hospitality that has defined us for nearly five decades. At the heart
+            of our kitchen is <strong>Nonna's philosophy</strong> — use the finest
+            ingredients, cook with your whole heart, and never rush a good thing.
+          </p>
+          <p>
+            We bring together <em>traditional Italian flavours with a touch of modern
+            inspiration</em>, honouring the classics while keeping things exciting.
+            Whether it's your first visit or your fiftieth, we promise it will feel
+            like coming home.
+          </p>
+          <a href="contact.html" class="btn btn--outline-dark" style="margin-top:0.5rem">
+            Find Us in Leichhardt
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FEATURED DISHES
+  ═══════════════════════════════════════════ -->
+  <section class="dishes">
+    <div class="container">
+      <div class="dishes__header reveal">
+        <span class="section-label">From Our Kitchen</span>
+        <h2>Dishes You'll Dream About</h2>
+        <p class="p--wide">Every dish tells a story. From Nonna's slow-cooked ragù to our perfectly charred, wood-fired pizzas — this is the food that keeps our guests coming back.</p>
+      </div>
+
+      <div class="dishes__grid">
+
+        <!-- Large featured card -->
+        <div class="dish-card reveal">
+          <!-- TODO: Replace with real Pappardelle Bolognese photo -->
+          <img
+            src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800&q=80&fit=crop"
+            alt="Pappardelle Bolognese — replace with real dish photo"
+            class="dish-card__img"
+            loading="lazy"
+          >
+          <div class="dish-card__overlay"></div>
+          <div class="dish-card__info">
+            <span class="dish-card__tag">Signature</span>
+            <div class="dish-card__name">Pappardelle Bolognese</div>
+            <div class="dish-card__desc">Wide ribbons of handmade pasta in a rich, slow-braised meat sauce. The one that makes them come back.</div>
+          </div>
+        </div>
+
+        <!-- Regular cards -->
+        <div class="dish-card reveal reveal-delay-1">
+          <!-- TODO: Replace with real Margherita pizza photo -->
+          <img
+            src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80&fit=crop"
+            alt="Wood-fired Margherita Pizza — replace with real dish photo"
+            class="dish-card__img"
+            loading="lazy"
+          >
+          <div class="dish-card__overlay"></div>
+          <div class="dish-card__info">
+            <span class="dish-card__tag">Wood-Fired</span>
+            <div class="dish-card__name">Margherita</div>
+            <div class="dish-card__desc">Light, perfectly balanced. Even praised by a Neapolitan.</div>
+          </div>
+        </div>
+
+        <div class="dish-card reveal reveal-delay-2">
+          <!-- TODO: Replace with real Caprese photo -->
+          <img
+            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80&fit=crop"
+            alt="Caprese Salad — replace with real dish photo"
+            class="dish-card__img"
+            loading="lazy"
+          >
+          <div class="dish-card__overlay"></div>
+          <div class="dish-card__info">
+            <span class="dish-card__tag">Antipasto</span>
+            <div class="dish-card__name">Caprese di Bufala</div>
+            <div class="dish-card__desc">Buffalo mozzarella, heirloom tomatoes, fresh basil, EVOO.</div>
+          </div>
+        </div>
+
+        <div class="dish-card reveal reveal-delay-1">
+          <!-- TODO: Replace with real lamb ragu / pasta photo -->
+          <img
+            src="https://images.unsplash.com/photo-1551183053-bf91798d765a?w=800&q=80&fit=crop"
+            alt="Homemade Lamb Ragù Pasta — replace with real dish photo"
+            class="dish-card__img"
+            loading="lazy"
+          >
+          <div class="dish-card__overlay"></div>
+          <div class="dish-card__info">
+            <span class="dish-card__tag">House Favourite</span>
+            <div class="dish-card__name">Ragù di Agnello</div>
+            <div class="dish-card__desc">Homemade lamb ragù — smells and tastes just like home.</div>
+          </div>
+        </div>
+
+        <div class="dish-card reveal reveal-delay-2">
+          <!-- TODO: Replace with real Barramundi photo -->
+          <img
+            src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&q=80&fit=crop"
+            alt="Barramundi al Forno — replace with real dish photo"
+            class="dish-card__img"
+            loading="lazy"
+          >
+          <div class="dish-card__overlay"></div>
+          <div class="dish-card__info">
+            <span class="dish-card__tag">Secondi</span>
+            <div class="dish-card__name">Barramundi al Forno</div>
+            <div class="dish-card__desc">Perfectly cooked barramundi, roasted herbs, lemon butter.</div>
+          </div>
+        </div>
+
+        <div class="dish-card reveal reveal-delay-3">
+          <!-- TODO: Replace with real Tiramisù photo -->
+          <img
+            src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=80&fit=crop"
+            alt="Tiramisù della Casa — replace with real dish photo"
+            class="dish-card__img"
+            loading="lazy"
+          >
+          <div class="dish-card__overlay"></div>
+          <div class="dish-card__info">
+            <span class="dish-card__tag">Dolci</span>
+            <div class="dish-card__name">Tiramisù della Casa</div>
+            <div class="dish-card__desc">Nonna's recipe. Mascarpone, espresso, savoiardi. Non-negotiable.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="dishes__cta reveal">
+        <a href="menu.html" class="btn btn--outline" style="border-color:var(--c-gold);color:var(--c-gold)">
+          View Full Menu
+        </a>
+        <a href="menu.html#dinner" class="btn btn--primary">Dinner Menu</a>
+        <a href="menu.html#lunch" class="btn btn--outline" style="border-color:rgba(250,243,227,.4);color:var(--c-cream)">Lunch Menu</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       IL CAFFÈ MATTUTINO — MORNING CAFÉ
+  ═══════════════════════════════════════════ -->
+  <section class="caffe">
+    <div class="container">
+      <div class="caffe__grid">
+
+        <div class="caffe__img-col reveal">
+          <div class="caffe__imgs">
+            <!-- TODO: Replace with real morning café / barista photos -->
+            <img
+              src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&q=80&fit=crop"
+              alt="A perfect cappuccino at La Botte D'Oro — replace with real photo"
+              class="caffe__img"
+              loading="lazy"
+            >
+            <img
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80&fit=crop"
+              alt="Morning café atmosphere — replace with real photo"
+              class="caffe__img"
+              loading="lazy"
+            >
+          </div>
+        </div>
+
+        <div class="caffe__text reveal reveal-delay-2">
+          <span class="section-label">Morning Ritual</span>
+          <h2>Il Caffè del Mattino</h2>
+          <p>
+            There's something magical about a morning in Italy — the clatter of
+            espresso cups, the sweet smell of a fresh cornetto, the barista who
+            knows your order before you open your mouth.
+          </p>
+          <p>
+            At La Botte D'Oro, our <strong>superstar barista</strong> has brought that
+            exact feeling to Leichhardt. Come in for the best cappuccino in Sydney,
+            freshly baked pastries, and a moment that takes you straight back to
+            standing at a bar in Rome or Naples.
+          </p>
+          <p>
+            Whether you're a regular or a newcomer, every morning coffee here
+            is a small escape to Italy — without the airfare.
+          </p>
+
+          <div class="caffe__feature">
+            <p>"The crema di caffè alone is worth the trip. It genuinely takes you back to being in Italy — having your morning coffee at the bar."</p>
+            <cite>— A regular at La Botte D'Oro</cite>
+          </div>
+
+          <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+            <a href="menu.html#caffe" class="btn btn--primary">View Caffè Menu</a>
+            <a href="contact.html" class="btn btn--outline-dark">Opening Hours</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       EVENTS CTA STRIP
+  ═══════════════════════════════════════════ -->
+  <section class="events-strip">
+    <div class="container">
+      <div class="events-strip__inner reveal">
+        <span class="section-label" style="justify-content:center">Special Occasions</span>
+        <h2>Your Next Celebration Starts Here</h2>
+        <p class="p--wide">
+          From intimate christening lunches to Valentine's Day set menus — we make
+          every occasion extraordinary. The whole restaurant, just for you and the
+          people who matter most.
+        </p>
+        <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
+          <a href="events.html" class="btn" style="background:#fff;color:var(--c-terra);font-weight:600">
+            Explore Private Dining
+          </a>
+          <a href="contact.html" class="btn btn--outline">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════════ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="testimonials__header reveal">
+        <span class="section-label">What Our Guests Say</span>
+        <h2>Loved by Leichhardt & Beyond</h2>
+        <div class="testimonials__rating">
+          <span class="stars">★★★★★</span>
+          <span><strong>4.7</strong> out of 5 · 625+ Google Reviews</span>
+        </div>
+      </div>
+
+      <div class="testimonials__grid">
+
+        <div class="review-card reveal">
+          <div class="review-card__bg-q">"</div>
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">
+            "My favourite Italian restaurant so far in Sydney! The food is absolutely
+            outstanding — there has never been a time when we didn't eat well. Gabriele
+            and his team make you feel right at home."
+          </p>
+          <div class="review-card__author">Sarah M.</div>
+          <div class="review-card__platform">Google Review · Verified Diner</div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-card__bg-q">"</div>
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">
+            "Even on their busiest nights, the service is impeccable — friendly smiles
+            and efficient service throughout. The Pappardelle Bolognese is something
+            special. We keep coming back every week."
+          </p>
+          <div class="review-card__author">Marco &amp; Lisa T.</div>
+          <div class="review-card__platform">Google Review · Regular Guests</div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-card__bg-q">"</div>
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">
+            "We held our family's christening lunch here — 60 guests with the whole
+            restaurant to ourselves. Gabriele went above and beyond. The lamb ragù
+            smelled and tasted just like home. Absolutely unforgettable."
+          </p>
+          <div class="review-card__author">The Russo Family</div>
+          <div class="review-card__platform">Google Review · Private Event</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       BOOK A TABLE
+  ═══════════════════════════════════════════ -->
+  <section class="book">
+    <div class="container">
+      <div class="book__inner reveal">
+        <span class="section-label">Reserve Your Spot</span>
+        <h2>Join Us at the Table</h2>
+        <p class="p--wide">
+          Whether it's a weeknight dinner for two or a special celebration for sixty,
+          we'd love to have you. Book ahead or walk in — we'll always find a way to
+          make room.
+        </p>
+
+        <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem">
+          <a href="https://labottedoro.com.au/book" class="btn btn--primary" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book Now
+          </a>
+          <a href="tel:0295601349" class="btn btn--outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.81 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.91a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.17-1.17a2 2 0 012.11-.45c.94.35 1.92.59 2.91.72A2 2 0 0122 16.92z"/></svg>
+            Call (02) 9560 1349
+          </a>
+          <a href="https://labottedoro.com.au/order" class="btn btn--gold" target="_blank" rel="noopener">Order Online</a>
+        </div>
+
+        <div class="book__options">
+          <div class="book__option">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2h18M3 22h18M12 2v20M3 12h18"/></svg>
+            <strong>Dine In</strong>
+            <span>Full restaurant experience</span>
+          </div>
+          <div class="book__option">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+            <strong>Kerbside Pickup</strong>
+            <span>We'll bring it to your car</span>
+          </div>
+          <div class="book__option">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <strong>No-Contact Delivery</strong>
+            <span>Straight to your door</span>
+          </div>
+          <div class="book__option">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+            <strong>Gift Vouchers</strong>
+            <span>Gift an Italian dinner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <div>
+          <div class="footer__brand-name">La Botte D'Oro</div>
+          <span class="footer__brand-since">Ristorante Italiano · est. 1977</span>
+          <p class="footer__brand-desc">
+            Authentic Italian flavours with a touch of modern inspiration.
+            Where every table feels like family.
+          </p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/labottedorosydney" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/labottedoro" target="_blank" rel="noopener" aria-label="Instagram">✦</a>
+            <a href="https://g.page/labottedoro" target="_blank" rel="noopener" aria-label="Google">G</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="events.html">Events &amp; Private Dining</a>
+          <a href="contact.html">Contact &amp; Hours</a>
+          <a href="https://labottedoro.com.au/book" target="_blank" rel="noopener">Book a Table</a>
+          <a href="https://labottedoro.com.au/order" target="_blank" rel="noopener">Order Online</a>
+        </div>
+
+        <div class="footer__col">
+          <h4>Opening Hours</h4>
+          <div class="footer__hours-item"><strong>Mon – Fri</strong> <span>7:30 am – 3:00 pm</span></div>
+          <div class="footer__hours-item"><strong></strong> <span>5:30 pm – 10:00 pm</span></div>
+          <div class="footer__hours-item"><strong>Sat – Sun</strong> <span>8:00 am – 3:00 pm</span></div>
+          <div class="footer__hours-item"><strong></strong> <span>5:30 pm – 10:30 pm</span></div>
+          <p style="font-size:.78rem;color:rgba(250,243,227,.35);margin-top:.5rem">Closed between 3pm – 5:30pm daily</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Find Us</h4>
+          <p>137 Marion St</p>
+          <p>Leichhardt NSW 2040</p>
+          <a href="tel:0295601349" style="margin-top:.75rem">(02) 9560 1349</a>
+          <a href="https://labottedoro.com.au" target="_blank" rel="noopener">labottedoro.com.au</a>
+          <a href="https://maps.google.com/?q=137+Marion+St+Leichhardt+NSW+2040" target="_blank" rel="noopener" style="margin-top:.75rem;color:var(--c-terra)">
+            ↗ Open in Google Maps
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2025 La Botte D'Oro. All rights reserved.</span>
+        <div style="display:flex;gap:1.5rem">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="https://labottedoro.com.au" target="_blank" rel="noopener">labottedoro.com.au</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

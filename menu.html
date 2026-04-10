@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Botte D'Oro Menu — Caffè, Lunch & Dinner menus. Handmade pasta, wood-fired pizzas, fresh seafood, Italian desserts and the best cappuccino in Leichhardt.">
+  <title>Menu — La Botte D'Oro | Leichhardt, Sydney</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫙</text></svg>">
+  <style>
+    /* Menu-specific photo banners */
+    .menu-photo-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .75rem;
+      margin: 3rem 0;
+    }
+    .menu-photo-row img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    @media(max-width:768px){
+      .menu-photo-row { grid-template-columns: repeat(2,1fr); }
+    }
+    .menu-note {
+      padding: 1rem 1.5rem;
+      background: rgba(201,146,42,.08);
+      border-left: 3px solid var(--c-gold);
+      font-size: .9rem;
+      color: var(--c-text-mid);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 2rem;
+    }
+    .caffe-hero {
+      text-align: center;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--c-parchment);
+      margin-bottom: 3rem;
+    }
+    .caffe-hero img {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      border-radius: 2px;
+      margin-inline: auto;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+    .caffe-hero h3 { font-size: 1.6rem; margin-bottom: .5rem; }
+    .caffe-hero p { color: var(--c-text-mid); font-size: .95rem; margin-inline: auto; }
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .drink-item {
+      padding: 1.25rem;
+      background: var(--c-parchment);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .drink-item__name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+    .drink-item__desc { font-size: .82rem; color: var(--c-text-soft); }
+    .drink-item__price { font-family: var(--font-display); color: var(--c-terra); font-weight: 600; margin-top: .4rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        La Botte D'Oro
+        <span>Ristorante Italiano</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="https://labottedoro.com.au/book" class="nav__book" target="_blank" rel="noopener">Book a Table</a>
+      <button class="nav__burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile">
+    <button class="nav__mobile-close">✕</button>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://labottedoro.com.au/book" class="btn btn--primary" style="margin-top:1rem">Book a Table</a>
+  </div>
+
+
+  <!-- PAGE HEADER -->
+  <header class="page-header menu-bg">
+    <div class="container">
+      <div class="page-header__inner">
+        <span class="section-label" style="justify-content:center">Our Menus</span>
+        <h1>Food Made With Love</h1>
+        <p>From the first cappuccino of the morning to the last glass of wine at dinner — every dish is crafted with the same dedication Nonna would demand.</p>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- MENU SECTION -->
+  <section class="menu-section">
+    <div class="container">
+
+      <!-- Tab Navigation -->
+      <div class="menu-tabs" role="tablist">
+        <button class="menu-tab active" data-tab="caffe" role="tab" aria-selected="true">☕ Caffè</button>
+        <button class="menu-tab" data-tab="lunch" role="tab" aria-selected="false">🌿 Pranzo · Lunch</button>
+        <button class="menu-tab" data-tab="dinner" role="tab" aria-selected="false">🍷 Cena · Dinner</button>
+      </div>
+
+      <!-- ── CAFFÈ MENU ──────────────────────────────────────── -->
+      <div class="menu-panel active" id="caffe" role="tabpanel">
+
+        <div class="caffe-hero">
+          <!-- TODO: Replace with real barista / morning café photo -->
+          <img
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80&fit=crop"
+            alt="La Botte D'Oro morning caffè — replace with real photo"
+            loading="lazy"
+          >
+          <h3>Il Caffè del Mattino</h3>
+          <p>Start your morning the Italian way. Our superstar barista is waiting.</p>
+        </div>
+
+        <div class="menu-note">
+          <strong>Morning service:</strong> Mon–Fri from 7:30 am · Sat–Sun from 8:00 am · Until 11:30 am · Kitchen closes at 3:00 pm daily
+        </div>
+
+        <div class="menu-cols">
+          <div>
+            <div class="menu-category">
+              <div class="menu-category__title">Caffè</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Crema di Caffè <span class="menu-item__badge">Must Try</span></div>
+                    <div class="menu-item__desc">Chilled espresso cream — the most Italian thing you'll taste today</div>
+                  </div>
+                  <div class="menu-item__price">$6</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Cappuccino <span class="menu-item__badge">Famous</span></div>
+                    <div class="menu-item__desc">Silky microfoam, perfectly balanced espresso — the best in Leichhardt</div>
+                  </div>
+                  <div class="menu-item__price">$5</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Espresso</div>
+                    <div class="menu-item__desc">Short, bold, rich. The Italian way.</div>
+                  </div>
+                  <div class="menu-item__price">$4</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Doppio Espresso</div>
+                    <div class="menu-item__desc">Double shot for the mornings that demand it</div>
+                  </div>
+                  <div class="menu-item__price">$5</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Macchiato</div>
+                    <div class="menu-item__desc">Espresso with a touch of steamed milk</div>
+                  </div>
+                  <div class="menu-item__price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Flat White</div>
+                    <div class="menu-item__desc">Velvety, smooth, and just right</div>
+                  </div>
+                  <div class="menu-item__price">$5</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Caffè Latte</div>
+                    <div class="menu-item__desc">Espresso with steamed milk and light froth</div>
+                  </div>
+                  <div class="menu-item__price">$5.50</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Long Black</div>
+                    <div class="menu-item__desc">Hot water over a double espresso shot</div>
+                  </div>
+                  <div class="menu-item__price">$4.50</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Iced Coffee / Iced Latte</div>
+                    <div class="menu-item__desc">Cold brew or espresso over ice with milk</div>
+                  </div>
+                  <div class="menu-item__price">$6</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Alternative Milks</div>
+                    <div class="menu-item__desc">Oat, almond, soy — available for all coffees</div>
+                  </div>
+                  <div class="menu-item__price">+$0.70</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="menu-category">
+              <div class="menu-category__title">Pasticceria & Colazione</div>
+              <div class="menu-items">
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Cornetto Classico</div>
+                    <div class="menu-item__desc">Flaky, buttery Italian-style croissant — plain, jam, or cream</div>
+                  </div>
+                  <div class="menu-item__price">$4.50</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Cannoli Siciliani <span class="menu-item__badge">Freshly Made</span></div>
+                    <div class="menu-item__desc">Crisp pastry shells filled with sweet ricotta, pistachios, chocolate chips</div>
+                  </div>
+                  <div class="menu-item__price">$6</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Bombolone</div>
+                    <div class="menu-item__desc">Soft Italian doughnut — custard or Nutella filled</div>
+                  </div>
+                  <div class="menu-item__price">$5</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Avocado Toast</div>
+                    <div class="menu-item__desc">Smashed avocado, sourdough, chilli flakes, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$16</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Uova e Toast</div>
+                    <div class="menu-item__desc">Scrambled or poached eggs on sourdough toast</div>
+                  </div>
+                  <div class="menu-item__price">$15</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Yogurt e Granola</div>
+                    <div class="menu-item__desc">House granola, Greek yogurt, seasonal fruit, honey</div>
+                  </div>
+                  <div class="menu-item__price">$14</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Succo d'Arancia</div>
+                    <div class="menu-item__desc">Freshly squeezed orange juice</div>
+                  </div>
+                  <div class="menu-item__price">$7</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end caffè panel -->
+
+
+      <!-- ── LUNCH MENU ──────────────────────────────────────── -->
+      <div class="menu-panel" id="lunch" role="tabpanel">
+
+        <div class="menu-note">
+          <strong>Lunch service:</strong> Mon–Fri 11:30 am – 3:00 pm · Sat–Sun 11:00 am – 3:00 pm · Please note we close at 3:00 pm and reopen for dinner at 5:30 pm
+        </div>
+
+        <!-- Photo row -->
+        <div class="menu-photo-row">
+          <!-- TODO: Replace with real lunch dish photos -->
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80&fit=crop" alt="Caprese — replace with real photo" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&q=80&fit=crop" alt="Pizza Margherita — replace with real photo" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1551183053-bf91798d765a?w=400&q=80&fit=crop" alt="Pasta — replace with real photo" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80&fit=crop" alt="Calamari — replace with real photo" loading="lazy">
+        </div>
+
+        <div class="menu-cols">
+          <div>
+            <div class="menu-category">
+              <div class="menu-category__title">Antipasti</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Caprese di Bufala <span class="menu-item__badge">Classic</span></div>
+                    <div class="menu-item__desc">Buffalo mozzarella, heirloom tomatoes, fresh basil, aged balsamic, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$19</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Bruschetta al Pomodoro</div>
+                    <div class="menu-item__desc">Sourdough, crushed tomato, garlic, basil, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$14</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Calamari Fritti <span class="menu-item__badge">Loved</span></div>
+                    <div class="menu-item__desc">Crispy fried calamari, aioli, lemon wedge, chilli flakes</div>
+                  </div>
+                  <div class="menu-item__price">$22</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Zuppa del Giorno</div>
+                    <div class="menu-item__desc">Chef's soup of the day with crusty bread</div>
+                  </div>
+                  <div class="menu-item__price">$15</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <div class="menu-category__title">Pasta</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Pappardelle Bolognese <span class="menu-item__badge">Signature</span></div>
+                    <div class="menu-item__desc">Wide handmade pappardelle in Nonna's slow-braised meat sauce, Parmigiano</div>
+                  </div>
+                  <div class="menu-item__price">$28</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Spaghetti Carbonara</div>
+                    <div class="menu-item__desc">Guanciale, egg yolk, Pecorino Romano, black pepper — the authentic Roman way</div>
+                  </div>
+                  <div class="menu-item__price">$27</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Ravioli del Giorno</div>
+                    <div class="menu-item__desc">Chef's daily handmade ravioli — ask your waiter for today's filling</div>
+                  </div>
+                  <div class="menu-item__price">$29</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Penne all'Arrabbiata</div>
+                    <div class="menu-item__desc">San Marzano tomato, chilli, garlic, fresh basil (V)</div>
+                  </div>
+                  <div class="menu-item__price">$22</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="menu-category">
+              <div class="menu-category__title">Pizza dal Forno a Legna</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Margherita <span class="menu-item__badge">Wood-Fired</span></div>
+                    <div class="menu-item__desc">San Marzano, fior di latte, fresh basil, EVOO. Light and perfectly balanced.</div>
+                  </div>
+                  <div class="menu-item__price">$22</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Prosciutto e Burrata <span class="menu-item__badge">Must Try</span></div>
+                    <div class="menu-item__desc">San Marzano base, fior di latte, prosciutto crudo, fresh burrata, rocket, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$30</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Diavola</div>
+                    <div class="menu-item__desc">San Marzano, fior di latte, spicy salami, chilli, basil</div>
+                  </div>
+                  <div class="menu-item__price">$26</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Quattro Formaggi</div>
+                    <div class="menu-item__desc">Fior di latte, gorgonzola, Parmigiano, smoked provola, honey drizzle</div>
+                  </div>
+                  <div class="menu-item__price">$27</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Pizza da Asporto</div>
+                    <div class="menu-item__desc">Takeaway pizzas available — call ahead or order online</div>
+                  </div>
+                  <div class="menu-item__price">From $20</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <div class="menu-category__title">Secondi</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Barramundi al Limone <span class="menu-item__badge">Fresh Daily</span></div>
+                    <div class="menu-item__desc">Perfectly pan-roasted barramundi, caper lemon butter, seasonal greens</div>
+                  </div>
+                  <div class="menu-item__price">$35</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Pollo alla Parmigiana</div>
+                    <div class="menu-item__desc">Crumbed chicken breast, Napoli sauce, mozzarella, Parmigiano</div>
+                  </div>
+                  <div class="menu-item__price">$30</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end lunch panel -->
+
+
+      <!-- ── DINNER MENU ─────────────────────────────────────── -->
+      <div class="menu-panel" id="dinner" role="tabpanel">
+
+        <div class="menu-note">
+          <strong>Dinner service:</strong> Mon–Thu 5:30 pm – 10:00 pm · Fri–Sat 5:30 pm – 10:30 pm · Sun 5:30 pm – 10:00 pm · Bookings recommended
+        </div>
+
+        <!-- Photo row -->
+        <div class="menu-photo-row">
+          <!-- TODO: Replace with real dinner dish photos -->
+          <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=400&q=80&fit=crop" alt="Pappardelle Bolognese — replace with real photo" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&q=80&fit=crop" alt="Barramundi — replace with real photo" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80&fit=crop" alt="Tiramisù — replace with real photo" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&q=80&fit=crop" alt="Wine — replace with real photo" loading="lazy">
+        </div>
+
+        <div class="menu-cols">
+          <div>
+            <div class="menu-category">
+              <div class="menu-category__title">Antipasti</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Caprese di Bufala <span class="menu-item__badge">Classic</span></div>
+                    <div class="menu-item__desc">Buffalo mozzarella, heirloom tomatoes, basil, aged balsamic, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$22</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Antipasto Misto</div>
+                    <div class="menu-item__desc">Selection of Italian cured meats, cheeses, pickled vegetables, grissini</div>
+                  </div>
+                  <div class="menu-item__price">$36</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Calamari Fritti <span class="menu-item__badge">Loved</span></div>
+                    <div class="menu-item__desc">Crispy calamari, house aioli, lemon, chilli</div>
+                  </div>
+                  <div class="menu-item__price">$25</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Burrata e Prosciutto</div>
+                    <div class="menu-item__desc">Creamy burrata, San Daniele prosciutto, roasted cherry tomatoes, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$28</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <div class="menu-category__title">Pasta Fatta in Casa</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Pappardelle Bolognese <span class="menu-item__badge">Signature</span></div>
+                    <div class="menu-item__desc">Wide handmade pappardelle in Nonna's slow-braised meat sauce, Parmigiano</div>
+                  </div>
+                  <div class="menu-item__price">$32</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Ragù di Agnello <span class="menu-item__badge">House Favourite</span></div>
+                    <div class="menu-item__desc">Handmade pasta with slow-cooked lamb ragù, rosemary, Parmigiano. Smells and tastes just like home.</div>
+                  </div>
+                  <div class="menu-item__price">$34</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Pasta al Pesce Spada <span class="menu-item__badge">Chef's Pick</span></div>
+                    <div class="menu-item__desc">Swordfish pasta with cherry tomatoes, olives, capers, chilli, parsley</div>
+                  </div>
+                  <div class="menu-item__price">$36</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Ravioli di Ricotta e Spinaci</div>
+                    <div class="menu-item__desc">Handmade ricotta & spinach ravioli, sage brown butter, Parmigiano (V)</div>
+                  </div>
+                  <div class="menu-item__price">$30</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Linguine alle Vongole</div>
+                    <div class="menu-item__desc">Clams, white wine, garlic, chilli, parsley, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$34</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Spaghetti Carbonara</div>
+                    <div class="menu-item__desc">Guanciale, egg yolk, Pecorino Romano, black pepper</div>
+                  </div>
+                  <div class="menu-item__price">$29</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="menu-category">
+              <div class="menu-category__title">Pizza dal Forno a Legna</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Margherita <span class="menu-item__badge">Wood-Fired</span></div>
+                    <div class="menu-item__desc">San Marzano, fior di latte, basil, EVOO. The classic that speaks for itself.</div>
+                  </div>
+                  <div class="menu-item__price">$24</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Prosciutto e Burrata <span class="menu-item__badge">Must Try</span></div>
+                    <div class="menu-item__desc">San Marzano, fior di latte, prosciutto crudo, burrata, rocket, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$32</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Diavola</div>
+                    <div class="menu-item__desc">San Marzano, fior di latte, spicy Calabrese salami, chilli oil</div>
+                  </div>
+                  <div class="menu-item__price">$28</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Quattro Stagioni</div>
+                    <div class="menu-item__desc">Prosciutto, mushroom, artichokes, olives, mozzarella</div>
+                  </div>
+                  <div class="menu-item__price">$30</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <div class="menu-category__title">Secondi</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Barramundi al Limone <span class="menu-item__badge">Fresh Daily</span></div>
+                    <div class="menu-item__desc">Pan-roasted barramundi, caper lemon butter, seasonal greens, EVOO</div>
+                  </div>
+                  <div class="menu-item__price">$40</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Filetto di Manzo</div>
+                    <div class="menu-item__desc">Grass-fed beef fillet, roasted potatoes, seasonal vegetables, salsa verde</div>
+                  </div>
+                  <div class="menu-item__price">$48</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Pollo al Forno</div>
+                    <div class="menu-item__desc">Oven-roasted chicken, rosemary, garlic, white wine, roasted vegetables</div>
+                  </div>
+                  <div class="menu-item__price">$35</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <div class="menu-category__title">Dolci</div>
+              <div class="menu-items">
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Tiramisù della Casa <span class="menu-item__badge">Nonna's Recipe</span></div>
+                    <div class="menu-item__desc">Mascarpone, espresso-soaked savoiardi, cocoa. The only way it should be made.</div>
+                  </div>
+                  <div class="menu-item__price">$14</div>
+                </div>
+                <div class="menu-item menu-item--featured">
+                  <div>
+                    <div class="menu-item__name">Cannoli Siciliani <span class="menu-item__badge">Freshly Made</span></div>
+                    <div class="menu-item__desc">Crisp pastry shells, sweet ricotta, pistachios, chocolate chips — made to order</div>
+                  </div>
+                  <div class="menu-item__price">$13</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Panna Cotta</div>
+                    <div class="menu-item__desc">Silky vanilla panna cotta, seasonal berry compote</div>
+                  </div>
+                  <div class="menu-item__price">$12</div>
+                </div>
+                <div class="menu-item">
+                  <div>
+                    <div class="menu-item__name">Gelato del Giorno</div>
+                    <div class="menu-item__desc">Chef's selection of artisan gelato — ask your waiter for today's flavours</div>
+                  </div>
+                  <div class="menu-item__price">$10</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <div class="menu-category__title">Vino & Bevande</div>
+              <div class="drinks-grid">
+                <div class="drink-item">
+                  <div class="drink-item__name">Vino Rosso</div>
+                  <div class="drink-item__desc">Glass or bottle — ask for today's selection</div>
+                  <div class="drink-item__price">From $12</div>
+                </div>
+                <div class="drink-item">
+                  <div class="drink-item__name">Vino Bianco</div>
+                  <div class="drink-item__desc">Crisp, fresh Italian whites</div>
+                  <div class="drink-item__price">From $12</div>
+                </div>
+                <div class="drink-item">
+                  <div class="drink-item__name">Rosé</div>
+                  <div class="drink-item__desc">Light, delicate Italian rosé</div>
+                  <div class="drink-item__price">From $12</div>
+                </div>
+                <div class="drink-item">
+                  <div class="drink-item__name">Birra Italiana</div>
+                  <div class="drink-item__desc">Peroni, Moretti, and craft selections</div>
+                  <div class="drink-item__price">From $9</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end dinner panel -->
+
+      <div class="reveal" style="text-align:center;padding-top:3rem;border-top:1px solid var(--c-parchment);margin-top:3rem">
+        <p style="color:var(--c-text-soft);font-size:.9rem;margin-bottom:1.5rem">(V) Vegetarian · Prices are subject to change · Menu changes seasonally · Please inform us of any allergies</p>
+        <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
+          <a href="https://labottedoro.com.au/book" class="btn btn--primary" target="_blank" rel="noopener">Book a Table</a>
+          <a href="https://labottedoro.com.au/order" class="btn btn--gold" target="_blank" rel="noopener">Order Online</a>
+          <a href="tel:0295601349" class="btn btn--outline-dark">(02) 9560 1349</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">La Botte D'Oro</div>
+          <span class="footer__brand-since">Ristorante Italiano · est. 1977</span>
+          <p class="footer__brand-desc">Authentic Italian flavours with a touch of modern inspiration.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4>Opening Hours</h4>
+          <div class="footer__hours-item"><strong>Mon – Fri</strong><span>7:30 am – 3:00 pm / 5:30 pm – 10:00 pm</span></div>
+          <div class="footer__hours-item"><strong>Sat – Sun</strong><span>8:00 am – 3:00 pm / 5:30 pm – 10:30 pm</span></div>
+          <p style="font-size:.78rem;color:rgba(250,243,227,.35);margin-top:.5rem">Closed 3pm–5:30pm daily</p>
+        </div>
+        <div class="footer__col">
+          <h4>Find Us</h4>
+          <p>137 Marion St, Leichhardt NSW 2040</p>
+          <a href="tel:0295601349">(02) 9560 1349</a>
+          <a href="https://maps.google.com/?q=137+Marion+St+Leichhardt+NSW+2040" target="_blank" rel="noopener" style="color:var(--c-terra);margin-top:.5rem">↗ Google Maps</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 La Botte D'Oro. All rights reserved.</span>
+        <a href="https://labottedoro.com.au">labottedoro.com.au</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
