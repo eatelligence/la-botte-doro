@@ -161,6 +161,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const firstFaq = document.querySelector('.faq__item');
   if (firstFaq) firstFaq.classList.add('open');
 
+  /* ── MOBILE CTA BAR ─────────────────────────────────────────
+     Slide bar off-screen when the footer scrolls into view.
+     Using IntersectionObserver so no scroll event overhead.   */
+  const mobCta = document.getElementById('mob-cta');
+  if (mobCta) {
+    const footer = document.querySelector('.footer');
+    if (footer) {
+      const footerObs = new IntersectionObserver(
+        ([entry]) => mobCta.classList.toggle('hidden', entry.isIntersecting),
+        { threshold: 0 }
+      );
+      footerObs.observe(footer);
+    }
+    // Hide while mobile menu is open — observer restores it on close
+    if (burger) {
+      burger.addEventListener('click', () => mobCta.classList.add('hidden'));
+      // On menu close, let the IntersectionObserver re-evaluate naturally;
+      // also do an immediate restore so bar reappears without waiting for scroll
+      const restoreCta = () => mobCta.classList.remove('hidden');
+      closeBtn?.addEventListener('click', restoreCta);
+      mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', restoreCta));
+    }
+  }
+
   /* ── CONTACT FORM ─────────────────────────────────────────── */
   const form = document.querySelector('.contact-form');
   if (form) {

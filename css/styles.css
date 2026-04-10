@@ -1598,6 +1598,58 @@ body.nav-open {
   }
 }
 
+/* ── MOBILE CTA BAR ─────────────────────────────────────────
+   Sticky "Book / Order" bar — mobile only, hides at footer. */
+.mob-cta { display: none; }
+
+@media (max-width: 768px) {
+  .mob-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 800; /* below nav (1000) and mobile menu (999) */
+    background: var(--c-espresso);
+    border-top: 1px solid rgba(250,243,227,.12);
+    padding: .75rem 1rem;
+    /* Safe-area padding so home-bar on iPhone doesn't overlap buttons */
+    padding-bottom: max(.75rem, calc(var(--safe-b) + .75rem));
+    gap: .65rem;
+    transform: translateY(0);
+    transition: transform .35s ease;
+    box-shadow: 0 -4px 24px rgba(0,0,0,.35);
+  }
+  /* Slide off-screen when footer becomes visible */
+  .mob-cta.hidden { transform: translateY(calc(100% + 1px)); }
+
+  .mob-cta__btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    min-height: 48px;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: opacity .15s ease;
+  }
+  .mob-cta__btn:active { opacity: .75; }
+  .mob-cta__btn--primary { background: var(--c-terra); color: #fff; }
+  .mob-cta__btn--gold    { background: var(--c-gold);  color: var(--c-espresso); }
+
+  /* Pad body so footer content isn't hidden behind the bar */
+  body { padding-bottom: calc(var(--mob-cta-h) + var(--safe-b)); }
+  /* When mobile menu is open, body is position:fixed — clear the padding */
+  body.nav-open { padding-bottom: 0; }
+}
+
 /* ── REDUCED MOTION ─────────────────────────────────────────
    Respect OS-level "Reduce Motion" accessibility setting.   */
 @media (prefers-reduced-motion: reduce) {
