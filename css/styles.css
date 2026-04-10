@@ -3,7 +3,7 @@
    Design: Warm Trattoria — terracotta, parchment, espresso
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Dancing+Script:wght@500;600;700&display=swap');
+/* Fonts loaded via <link> in HTML — no render-blocking @import */
 
 /* ── CUSTOM PROPERTIES ───────────────────────────────────── */
 :root {
@@ -32,6 +32,13 @@
   --shadow-lg:   0 12px 60px rgba(24,9,12,.20);
 
   --trans: .35s cubic-bezier(.25,.46,.45,.94);
+
+  /* ── MOBILE TOKENS ─ */
+  --mob-cta-h:  72px;                              /* sticky CTA bar height     */
+  --safe-t:     env(safe-area-inset-top, 0px);     /* iOS notch top             */
+  --safe-b:     env(safe-area-inset-bottom, 0px);  /* iOS home-bar bottom       */
+  --safe-l:     env(safe-area-inset-left, 0px);
+  --safe-r:     env(safe-area-inset-right, 0px);
 }
 
 /* ── RESET ───────────────────────────────────────────────── */
@@ -45,9 +52,12 @@ body {
   overflow-x: hidden;
 }
 img { max-width: 100%; height: auto; display: block; }
-a   { color: inherit; text-decoration: none; }
+a   { color: inherit; text-decoration: none; touch-action: manipulation; }
 ul  { list-style: none; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; touch-action: manipulation; }
+
+/* Prevent iOS Safari from zooming into form inputs (triggers when font-size < 16px) */
+input, select, textarea { font-size: max(1rem, 16px); }
 
 /* ── TYPOGRAPHY ──────────────────────────────────────────── */
 h1, h2, h3, h4 {
@@ -105,6 +115,7 @@ p { max-width: 65ch; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: .6rem;
   padding: .85rem 2rem;
   font-family: var(--font-body);
@@ -114,7 +125,9 @@ p { max-width: 65ch; }
   text-transform: uppercase;
   border-radius: var(--radius);
   transition: var(--trans);
-  white-space: nowrap;
+  white-space: nowrap;     /* overridden below 375px */
+  min-height: 44px;        /* WCAG / Apple minimum touch target */
+  min-width: 44px;
 }
 .btn--primary {
   background: var(--c-terra);
@@ -291,7 +304,8 @@ p { max-width: 65ch; }
 /* ── HERO ─────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100vh;   /* fallback for browsers without svh support */
+  min-height: 100svh;  /* svh = small viewport height — excludes iOS Safari chrome */
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1178,7 +1192,7 @@ p { max-width: 65ch; }
   width: 100%;
   padding: .85rem 1rem;
   font-family: var(--font-body);
-  font-size: .95rem;
+  font-size: 1rem; /* must be ≥ 16px — prevents iOS Safari auto-zoom */
   color: var(--c-text);
   background: var(--c-cream);
   border: 1.5px solid var(--c-parchment);
@@ -1332,4 +1346,59 @@ p { max-width: 65ch; }
   .menu-tab { padding: .6rem 1.2rem; font-size: .78rem; }
   .events-strip { padding: 4rem 0; }
   .page-header { padding: calc(var(--nav-h) + 2.5rem) 0 2.5rem; }
+}
+
+/* ── 375px: iPhone SE / small Android ───────────────────────
+   Extra tightening below the standard 390px iPhone width.   */
+@media (max-width: 375px) {
+  .container,
+  .container--narrow { width: calc(100% - 1.5rem); } /* 12px side gutters */
+
+  .btn { white-space: normal; }  /* let long button labels wrap rather than overflow */
+  .btn--sm { padding: .6rem 1rem; font-size: .78rem; }
+
+  h2 { font-size: clamp(1.6rem, 8vw, 2rem); }
+
+  .hero__ctas,
+  .hero__ctas-secondary { gap: .65rem; }
+
+  .nav__logo { font-size: 1.25rem; }
+  .nav__logo span { font-size: .95rem; }
+}
+
+/* ── REDUCED MOTION ─────────────────────────────────────────
+   Respect OS-level "Reduce Motion" accessibility setting.   */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Reveal elements become instantly visible */
+  .reveal { opacity: 1 !important; transform: none !important; }
+  /* Hero elements skip animation */
+  .hero__eyebrow,
+  .hero__title,
+  .hero__since,
+  .hero__intro,
+  .hero__ctas,
+  .hero__ctas-secondary { opacity: 1 !important; transform: none !important; animation: none !important; }
+  /* Disable hero background parallax scale */
+  .hero__bg { transform: none !important; transition: none !important; }
+  /* Disable scroll bounce animation */
+  .hero__scroll { animation: none !important; }
+}
+
+/* ── HOVER: NONE (touch devices) ────────────────────────────
+   Strip persistent hover states that stick on tap.          */
+@media (hover: none) {
+  .btn--primary:hover,
+  .btn--gold:hover { transform: none; }
+  .dish-card:hover .dish-card__img { transform: none; }
+  /* Make dish descriptions always visible on touch */
+  .dish-card__desc { opacity: 1; transform: none; }
+  .occasion-card:hover { transform: none; box-shadow: var(--shadow-sm); }
+  .review-card:hover { transform: none; box-shadow: var(--shadow-sm); }
+  .faq__item:hover { box-shadow: var(--shadow-sm); }
 }

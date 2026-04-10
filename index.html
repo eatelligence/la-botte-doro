@@ -154,9 +154,20 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- Preload hero background — prevents LCP delay on first paint -->
+  <link rel="preload" as="image"
+    href="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=85&fit=crop"
+    fetchpriority="high">
+
+  <!-- Google Fonts as <link> — no render-blocking @import in CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Dancing+Script:wght@500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Mobile browser chrome colour -->
+  <meta name="theme-color" content="#18090c">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫙</text></svg>">
 </head>
 <body>
