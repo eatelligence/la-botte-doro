@@ -1407,6 +1407,51 @@ body.nav-open {
   .nav__links, .nav__book { display: none; }
   .nav__burger { display: flex; }
 
+  /* ── HERO ───────────────────────────────────────────────── */
+
+  /* Swap to a mobile-optimised image — saves ~1 MB of bandwidth */
+  .hero__bg {
+    background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=75&fit=crop') !important;
+    background-position: center center;
+  }
+  /* Extra breathing room below the fixed nav, and space above the
+     browser chrome so CTAs are never hidden on short viewports   */
+  .hero__content {
+    padding-top:    calc(var(--nav-h) + 1.5rem);
+    padding-bottom: 5rem;
+  }
+  /* Scroll nudge adds no value on mobile — hides it cleanly */
+  .hero__scroll { display: none; }
+
+  /* Primary CTAs: full-width stacked, 52px min-height thumb targets */
+  .hero__ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .75rem;
+  }
+  .hero__ctas .btn {
+    width: 100%;
+    min-height: 52px;
+    justify-content: center;
+  }
+  /* Badge stays auto-width, left-aligned inside the flex column */
+  .hero__badge { align-self: flex-start; }
+
+  /* Secondary CTAs: 2-column grid so they don't wrap awkwardly */
+  .hero__ctas-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .65rem;
+  }
+  .hero__ctas-secondary .btn {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+    padding-left: .75rem;
+    padding-right: .75rem;
+  }
+
+  /* ── GRIDS ──────────────────────────────────────────────── */
   .story__grid,
   .caffe__grid,
   .events-intro__grid,
@@ -1416,22 +1461,56 @@ body.nav-open {
   .story__img-badge { right: 0; bottom: -1rem; width: 100px; height: 100px; }
   .story__img-badge strong { font-size: 1.6rem; }
 
-  .dishes__grid { grid-template-columns: 1fr; }
+  .dishes__grid      { grid-template-columns: 1fr; }
   .testimonials__grid { grid-template-columns: 1fr; }
-  .occasions__grid { grid-template-columns: 1fr; }
-  .footer__grid { grid-template-columns: 1fr; }
+  .occasions__grid   { grid-template-columns: 1fr; }
+  .footer__grid      { grid-template-columns: 1fr; }
 
+  /* ── TYPOGRAPHY ─────────────────────────────────────────── */
   h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
-  .hero__ctas { flex-direction: column; align-items: flex-start; }
+
+  /* ── MISC COMPONENTS ────────────────────────────────────── */
   .book__options { flex-direction: column; align-items: center; }
-  .book__option { width: 100%; max-width: 280px; flex-direction: row; justify-content: flex-start; }
-  .form-row { grid-template-columns: 1fr; }
+  .book__option  { width: 100%; max-width: 280px; flex-direction: row; justify-content: flex-start; }
+  .form-row      { grid-template-columns: 1fr; }
+
+  /* ── SECTION PADDING SCALE ──────────────────────────────────
+     7-rem sections → 4.5rem | 6-rem sections → 4rem
+     Halves the dead vertical space on phone screens.          */
+  .story, .dishes, .caffe, .testimonials, .faq, .book {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+  .menu-section, .events-intro, .occasions, .event-story,
+  .events-enquiry, .contact-section, .map-placeholder {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .menu-tab { padding: .6rem 1.2rem; font-size: .78rem; }
-  .events-strip { padding: 4rem 0; }
+  /* Menu tabs already override in earlier block — keep compact */
+  .menu-tab    { padding: .6rem 1.2rem; font-size: .78rem; }
+  .events-strip { padding: 3.5rem 0; }
   .page-header { padding: calc(var(--nav-h) + 2.5rem) 0 2.5rem; }
+
+  /* Secondary CTAs collapse to single column below 480px */
+  .hero__ctas-secondary { grid-template-columns: 1fr; }
+
+  /* ── SECTION PADDING SCALE ──────────────────────────────────
+     7-rem sections → 3.5rem | 6-rem sections → 3rem           */
+  .story, .dishes, .caffe, .testimonials, .faq, .book {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .menu-section, .events-intro, .occasions, .event-story,
+  .events-enquiry, .contact-section, .map-placeholder {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Footer padding tighten */
+  .footer { padding-top: 3.5rem; }
 }
 
 /* ── 375px: iPhone SE / small Android ───────────────────────
@@ -1440,16 +1519,30 @@ body.nav-open {
   .container,
   .container--narrow { width: calc(100% - 1.5rem); } /* 12px side gutters */
 
-  .btn { white-space: normal; }  /* let long button labels wrap rather than overflow */
+  .btn { white-space: normal; }
   .btn--sm { padding: .6rem 1rem; font-size: .78rem; }
 
   h2 { font-size: clamp(1.6rem, 8vw, 2rem); }
 
-  .hero__ctas,
-  .hero__ctas-secondary { gap: .65rem; }
+  /* Hero: tighter gaps at 320–375px */
+  .hero__ctas          { gap: .6rem; }
+  .hero__ctas-secondary { gap: .5rem; }
+  /* Even less bottom padding needed — viewport is short */
+  .hero__content { padding-bottom: 4rem; }
 
-  .nav__logo { font-size: 1.25rem; }
+  .nav__logo      { font-size: 1.25rem; }
   .nav__logo span { font-size: .95rem; }
+
+  /* Section padding: squeeze a further 0.5rem at 375px and below */
+  .story, .dishes, .caffe, .testimonials, .faq, .book {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .menu-section, .events-intro, .occasions, .event-story,
+  .events-enquiry, .contact-section, .map-placeholder {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
 }
 
 /* ── REDUCED MOTION ─────────────────────────────────────────
