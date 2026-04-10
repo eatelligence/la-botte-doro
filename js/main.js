@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (burger && mobileMenu) {
-    burger.addEventListener('click', openMenu);
-
-    // Close button (✕ in top corner)
-    closeBtn?.addEventListener('click', closeMenu);
+    // Toggle: open if closed, close if open
+    burger.addEventListener('click', () => {
+      mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+    });
 
     // Close when a nav link is tapped
     mobileMenu.querySelectorAll('a').forEach(a => {
