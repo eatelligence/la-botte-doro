@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     burger.classList.add('open');
     burger.setAttribute('aria-expanded', 'true');
     burger.setAttribute('aria-label', 'Close menu');
-    // Move focus to the close button for screen-reader users
-    closeBtn?.focus();
+    // Move focus to first nav link for screen-reader users
+    mobileMenu?.querySelector('a')?.focus();
   }
 
   function closeMenu() {
@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
      Using IntersectionObserver so no scroll event overhead.   */
   const mobCta = document.getElementById('mob-cta');
   if (mobCta) {
+    // Hide bar when footer is visible, restore when it leaves viewport
     const footer = document.querySelector('.footer');
     if (footer) {
       const footerObs = new IntersectionObserver(
@@ -173,15 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { threshold: 0 }
       );
       footerObs.observe(footer);
-    }
-    // Hide while mobile menu is open — observer restores it on close
-    if (burger) {
-      burger.addEventListener('click', () => mobCta.classList.add('hidden'));
-      // On menu close, let the IntersectionObserver re-evaluate naturally;
-      // also do an immediate restore so bar reappears without waiting for scroll
-      const restoreCta = () => mobCta.classList.remove('hidden');
-      closeBtn?.addEventListener('click', restoreCta);
-      mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', restoreCta));
     }
   }
 

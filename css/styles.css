@@ -357,32 +357,9 @@ p { max-width: 65ch; }
 .nav__mobile a:last-of-type { border-bottom: none; }
 .nav__mobile a:active { color: var(--c-terra); background: rgba(196,98,62,.08); }
 
-/* Close button — visible only when menu is open.
-   The burger hides when open so only this X appears in the overlay. */
-.nav__mobile-close {
-  position: absolute;
-  top:   max(1rem, calc(var(--safe-t) + .75rem));
-  right: max(1rem, calc(var(--safe-r) + .75rem));
-  width:  48px;
-  height: 48px;
-  display: none; /* shown via body.nav-open below */
-  align-items: center;
-  justify-content: center;
-  color: rgba(250,243,227,.7);
-  font-size: 1.5rem;
-  border-radius: 50%;
-  border: 1px solid rgba(250,243,227,.15);
-  cursor: pointer;
-  transition: background var(--trans), color var(--trans);
-}
-.nav__mobile-close:hover,
-.nav__mobile-close:active {
-  background: rgba(196,98,62,.2);
-  color: #fff;
-}
-/* When menu is open: hide burger (prevents double X), show close button */
-body.nav-open .nav__burger      { visibility: hidden; pointer-events: none; }
-body.nav-open .nav__mobile-close { display: flex; }
+/* Close button — not used; the burger itself is the toggle (☰ → ✕).
+   Hidden permanently. Kept in HTML only for legacy DOM references.  */
+.nav__mobile-close { display: none !important; }
 
 /* ── BODY SCROLL LOCK ───────────────────────────────────────
    Applied via JS — prevents background scroll on iOS/Android
@@ -1648,13 +1625,13 @@ body.nav-open {
   .mob-cta__btn--primary { background: var(--c-terra); color: #fff; }
   .mob-cta__btn--gold    { background: var(--c-gold);  color: var(--c-espresso); }
 
-  /* Extend footer's bottom padding so its content clears the bar.
-     Dark footer background fills the space — no white void.      */
-  .footer { padding-bottom: calc(var(--mob-cta-h) + var(--safe-b) + 1rem); }
+  /* Footer gets extra bottom padding equal to bar height so bar never
+     covers footer content. Fixed value — no env() calc complexity.  */
+  .footer { padding-bottom: 96px; }
 
-  /* Set html background to footer color so iOS overscroll / safe-area
-     never exposes the default white body background at the bottom.  */
-  html { background-color: #100508; }
+  /* Dark background on html AND body eliminates any white overscroll
+     or scroll-area exposure on iOS Safari and Android Chrome.        */
+  html, body { background: #100508; }
 }
 
 /* ── REDUCED MOTION ─────────────────────────────────────────
