@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     burger.classList.add('open');
     burger.setAttribute('aria-expanded', 'true');
     burger.setAttribute('aria-label', 'Close menu');
-    // Move focus into the menu for screen-readers
-    closeBtn?.focus();
+    // Move focus into the menu for screen-readers (first link)
+    mobileMenu?.querySelector('a')?.focus();
   }
 
   function closeMenu() {

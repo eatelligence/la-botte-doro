@@ -357,8 +357,10 @@ p { max-width: 65ch; }
 .nav__mobile a:last-of-type { border-bottom: none; }
 .nav__mobile a:active { color: var(--c-terra); background: rgba(196,98,62,.08); }
 
-/* Close button — 48×48px tap target, top-right, safe-area aware */
-.nav__mobile-close {
+/* Close button — hidden: the burger itself morphs to ✕ and handles close.
+   Keeping the element in the DOM for JS focus fallback, just not visible. */
+.nav__mobile-close { display: none; }
+.nav__mobile-close--visible {
   position: absolute;
   top:   max(1rem, calc(var(--safe-t) + .75rem));
   right: max(1rem, calc(var(--safe-r) + .75rem));
@@ -1644,10 +1646,9 @@ body.nav-open {
   .mob-cta__btn--primary { background: var(--c-terra); color: #fff; }
   .mob-cta__btn--gold    { background: var(--c-gold);  color: var(--c-espresso); }
 
-  /* Pad body so footer content isn't hidden behind the bar */
-  body { padding-bottom: calc(var(--mob-cta-h) + var(--safe-b)); }
-  /* When mobile menu is open, body is position:fixed — clear the padding */
-  body.nav-open { padding-bottom: 0; }
+  /* Extend footer's bottom padding so its content clears the bar.
+     Dark footer background fills the space — no white void.      */
+  .footer { padding-bottom: calc(var(--mob-cta-h) + var(--safe-b) + 1rem); }
 }
 
 /* ── REDUCED MOTION ─────────────────────────────────────────
