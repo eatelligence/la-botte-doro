@@ -357,16 +357,15 @@ p { max-width: 65ch; }
 .nav__mobile a:last-of-type { border-bottom: none; }
 .nav__mobile a:active { color: var(--c-terra); background: rgba(196,98,62,.08); }
 
-/* Close button — hidden: the burger itself morphs to ✕ and handles close.
-   Keeping the element in the DOM for JS focus fallback, just not visible. */
-.nav__mobile-close { display: none; }
-.nav__mobile-close--visible {
+/* Close button — visible only when menu is open.
+   The burger hides when open so only this X appears in the overlay. */
+.nav__mobile-close {
   position: absolute;
   top:   max(1rem, calc(var(--safe-t) + .75rem));
   right: max(1rem, calc(var(--safe-r) + .75rem));
   width:  48px;
   height: 48px;
-  display: flex;
+  display: none; /* shown via body.nav-open below */
   align-items: center;
   justify-content: center;
   color: rgba(250,243,227,.7);
@@ -381,6 +380,9 @@ p { max-width: 65ch; }
   background: rgba(196,98,62,.2);
   color: #fff;
 }
+/* When menu is open: hide burger (prevents double X), show close button */
+body.nav-open .nav__burger      { visibility: hidden; pointer-events: none; }
+body.nav-open .nav__mobile-close { display: flex; }
 
 /* ── BODY SCROLL LOCK ───────────────────────────────────────
    Applied via JS — prevents background scroll on iOS/Android
@@ -1649,6 +1651,10 @@ body.nav-open {
   /* Extend footer's bottom padding so its content clears the bar.
      Dark footer background fills the space — no white void.      */
   .footer { padding-bottom: calc(var(--mob-cta-h) + var(--safe-b) + 1rem); }
+
+  /* Set html background to footer color so iOS overscroll / safe-area
+     never exposes the default white body background at the bottom.  */
+  html { background-color: #100508; }
 }
 
 /* ── REDUCED MOTION ─────────────────────────────────────────
