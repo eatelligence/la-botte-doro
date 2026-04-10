@@ -280,36 +280,31 @@ p { max-width: 65ch; }
   content: '';
   position: absolute;
   left: 50%;
+  top: 50%;
   width: 22px;
   height: 2px;
   background: currentColor;
   border-radius: 2px;
   transform-origin: center;
-  transition: transform .35s cubic-bezier(.25,.46,.45,.94),
-              top .35s cubic-bezier(.25,.46,.45,.94),
-              opacity .2s ease;
+  /* top is now static — only transform animates (GPU-composited, no reflow) */
+  transition: transform .35s cubic-bezier(.25,.46,.45,.94), opacity .2s ease;
 }
-/* Top line */
+/* Top line — shifted up via transform, never via top */
 .nav__burger::before {
-  top: calc(50% - 7px);
-  transform: translateX(-50%);
-  /* box-shadow draws the middle line; top+bottom handled by ::before and ::after */
+  transform: translateX(-50%) translateY(-7px);
   box-shadow: 0 7px 0 currentColor;  /* middle line */
 }
 /* Bottom line */
 .nav__burger::after {
-  top: calc(50% + 7px);
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(7px);
 }
 
 /* ── ✕ open state ── */
 .nav__burger.open::before {
-  top: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
   box-shadow: none;
 }
 .nav__burger.open::after {
-  top: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
@@ -382,11 +377,12 @@ body.nav-open {
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=85&fit=crop');
+  background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=85&fit=crop&fm=webp&auto=format');
   background-size: cover;
   background-position: center 40%;
   transform: scale(1.05);
   transition: transform 8s ease;
+  will-change: transform;
 }
 .hero__bg.loaded { transform: scale(1); }
 .hero__overlay {
@@ -1394,7 +1390,7 @@ body.nav-open {
 
   /* Swap to a mobile-optimised image — saves ~1 MB of bandwidth */
   .hero__bg {
-    background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=75&fit=crop') !important;
+    background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=75&fit=crop&fm=webp&auto=format') !important;
     background-position: center center;
   }
   /* Extra breathing room below the fixed nav, and space above the
